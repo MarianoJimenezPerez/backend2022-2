@@ -1,5 +1,6 @@
 const ContenedorMongoDB = require('../src/ContenedorMongoDB.js')
 
+
 const objMensajesDao = new ContenedorMongoDB(
     'mensajes',
     { 
@@ -43,3 +44,5 @@ async function imprimir(){
 }
 
 imprimir()
+
+
