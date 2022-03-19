@@ -6,6 +6,7 @@ const {Server: IOServer } = require('socket.io');
 const fs = require('fs');
 const { engine } = require('express-handlebars');
 const { faker } = require('@faker-js/faker');
+const ContenedorMongoDB = require('./src/ContenedorMongoDB.js')
 
 
 
@@ -34,20 +35,29 @@ app.engine('hbs', engine({
 
 let date = new Date;
 
-const mensajes = [
+const objMensajesDao = new ContenedorMongoDB(
+    'mensajes',
     { 
         author: {
-            id: 'System@System.com', 
-            nombre: 'System', 
-            apellido: 'System', 
-            edad: '999', 
-            alias: 'System',
-            avatar: 'System'
+            id: {type: String, require: true},
+            nombre: {type: String, require: true}, 
+            apellido: {type: String, require: true}, 
+            edad: {type: Number, require: true},
+            alias: {type: String, require: true},
+            avatar: {type: String, require: true},
         },
-        hour: `[${date.getHours()}:${date.getMinutes()}]`,
-        text: 'Bienvenido con nueva estructura'
-    }
-];
+        hour: {type: String},
+        text: {type: String, require: true},
+    }    
+)
+
+// esta función conecta de manera asyncrona con el back y obtiene los mensajes almacenados allí
+// tuve que crearla así, para que no haya problemas con el async
+async function imprimir(){
+    let mensajes = await objMensajesDao.listarTodo();
+    console.log(mensajes)
+    return mensajes;
+}
 
 /* --------------------------------Funciones-------------------------------- */
 
@@ -86,13 +96,13 @@ function escribirArchivo(){
 
 let productos = generarProductos(5);
 
-io.on('connection', (socket) => { //defino la conexión y recibo con "on" al cliente.
+io.on('connection', async (socket) => { //defino la conexión y recibo con "on" al cliente.
 
     //envio los productos históricos
     socket.emit('productosHistoricos', productos)
 
     //envio los mensajes históricos
-    socket.emit('mensajesHistoricos', mensajes)
+    socket.emit('mensajesHistoricos', await imprimir())
 
     //escucho nuevos productos
     socket.on('nuevoProducto', data => {
@@ -103,9 +113,9 @@ io.on('connection', (socket) => { //defino la conexión y recibo con "on" al cli
     })
 
     //escucho nuevos mensajes
-    socket.on('nuevoMensaje', data => {
-        mensajes.push(data)
-        io.sockets.emit('mensajesHistoricos', mensajes)  //actualizo la vista, enviando nuevamente la bandeja histórica
+    socket.on('nuevoMensaje', async data => {
+        await objMensajesDao.insertar(data)
+        io.sockets.emit('mensajesHistoricos', await imprimir())  //actualizo la vista, enviando nuevamente la bandeja histórica
     })
 })
 
