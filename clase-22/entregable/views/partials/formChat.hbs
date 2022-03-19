@@ -3,12 +3,32 @@
     <form id="chat-form">
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input id="input-chat-email" type="email" placeholder="Ingrese su email" class="form-control" name="email" required="true">
+            <input id="input-chat-id" type="email" placeholder="Ingrese su email..." class="form-control" name="email" required="true">
             <p id="alert-email"></p>
         </div>
         <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input id="input-chat-name" type="text" placeholder="Ingrese su nombre..." class="form-control" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input id="input-chat-lastname" type="text" placeholder="Ingrese su apellido..." class="form-control" name="lastname">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Edad</label>
+            <input id="input-chat-yearsold" type="number" placeholder="Ingrese su edad..." class="form-control" name="yearsold">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Alias</label>
+            <input id="input-chat-alias" type="text" placeholder="Ingrese su alias..." class="form-control" name="alias">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Avatar</label>
+            <input id="input-chat-avatar" type="text" placeholder="Ingrese su avatar url..." class="form-control" name="avatar">
+        </div>
+        <div class="mb-3">
             <label class="form-label">Mensaje</label>
-            <input id="input-chat-message" type="text" placeholder="Necesito consultar sobre..." class="form-control" name="message">
+            <input id="input-chat-message" type="text" placeholder="Ingrese su mensaje..." class="form-control" name="message">
         </div>
         <button id="btn-chat-submit" type="submit" class="btn btn-primary">Enviar</button>
     </form>

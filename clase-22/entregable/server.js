@@ -35,10 +35,17 @@ app.engine('hbs', engine({
 let date = new Date;
 
 const mensajes = [
-    {
-        email: "System",
-        message: "Bienvenido",
-        hour: `[${date.getHours()}:${date.getMinutes()}]` // envio la fecha en formato [hora:minutos] de cuando se conecta el socket
+    { 
+        author: {
+            id: 'System@System.com', 
+            nombre: 'System', 
+            apellido: 'System', 
+            edad: '999', 
+            alias: 'System',
+            avatar: 'System'
+        },
+        hour: `[${date.getHours()}:${date.getMinutes()}]`,
+        text: 'Bienvenido con nueva estructura'
     }
 ];
 
@@ -48,7 +55,7 @@ function generarProductos(cantidad){
     let productos = [];
     for (let i = 0; i < cantidad; i++){
         let product = {
-            id: i,
+            id: i + 1,
             title: faker.commerce.product(),
             price: faker.datatype.float({ min: 100, max: 1000, precision: 0.01 }),
             thumbnail: faker.image.abstract() 
