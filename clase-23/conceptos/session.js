@@ -34,7 +34,7 @@ Es un middleware que se requiere a nivel de aplicación.
 
 app.get('/con-session', (req, res) =>{
     if(req.session.contador){
-        res.session.contador++;
+        req.session.contador++;
         res.send(`Ud ha visitado el sitio ${req.session.contador} veces`);
     } else {
         req.session.contador = 1;

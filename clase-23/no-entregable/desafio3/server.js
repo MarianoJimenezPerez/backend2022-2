@@ -27,7 +27,7 @@ app.get('/con-session', (req, res) =>{
         req.session.contador = 1;
         res.send('Bienvenido!');
     } else {
-        res.session.contador++;
+        req.session.contador++;
         res.send(`Ud ha visitado el sitio ${req.session.contador} veces`);
     }
 })
