@@ -159,6 +159,16 @@ app.get('/con-session', (req,res) => {
         res.send(`Te damos la Bienvenida ${getNombreSession(req)}`);
     }
 })
+app.get('/olvidar', (req, res) => {
+    const nombre = getNombreSession(req)
+    req.session.destroy(err => {
+        if (err) {
+            res.json({ error: 'olvidar', body: err })
+        } else {
+            res.render('logout', {nombre: nombre})
+        }
+      })
+})
 
 /* --------------------------------Servidor-------------------------------- */
 
