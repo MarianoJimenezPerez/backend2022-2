@@ -1,6 +1,15 @@
+{{#if nombre}}
 <div class="container mt-3">
     <div class="alert alert-success d-flex justify-content-between" role="alert">
-        <h4 class="alert-heading">Bienvenido!</h4>
+        <h4 id="user-box-title" class="alert-heading">Bienvenido! {{nombre}}</h4>
+    
         <button class="btn btn-danger">Desloguear</button>
     </div>
 </div>
+{{else}}
+<div class="container mt-3">
+    <div class="alert alert-danger" role="alert">
+        <p>Todavía no de has logueado, has click <a href="/login" class="alert-link">aquí</a> para hacerlo</p>
+    </div>
+</div>
+{{/if}}

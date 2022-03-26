@@ -103,6 +103,9 @@ let productos = generarProductos(5);
 
 io.on('connection', async (socket) => { //defino la conexión y recibo con "on" al cliente.
 
+    //envio login
+    
+
     //envio los productos históricos
     socket.emit('productosHistoricos', productos)
 
@@ -111,7 +114,7 @@ io.on('connection', async (socket) => { //defino la conexión y recibo con "on" 
 
     //escucho logins
     socket.on('nuevoLogin', data => {
-        console.log(data.nombre)
+        console.log(data)
     })
 
     //escucho nuevos productos
@@ -136,7 +139,8 @@ app.get('/login', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-    res.render('index', {})
+    req.session.nombre = req.query.nombre;
+    res.render('index', {nombre: getNombreSession(req)})
 });
 
 app.get('/api/productos-test', (req, res, next) => {
@@ -147,11 +151,12 @@ app.get('/api/productos-test', (req, res, next) => {
 
 app.get('/con-session', (req,res) => {
     if (req.session.contador) {
-        req.session.contador++;
-        res.send(`Ud ha visitado el sitio ${req.session.contador} veces`)
+        req.session.contador++
+        res.send(`${getNombreSession(req)} visitaste la página ${req.session.contador} veces.`)
     } else {
-        req.session.contador = 1;
-        res.send('Bienvenido!');
+        req.session.nombre = req.query.nombre; //por query pasamos nuestro nombre
+        req.session.contador = 1
+        res.send(`Te damos la Bienvenida ${getNombreSession(req)}`);
     }
 })
 
