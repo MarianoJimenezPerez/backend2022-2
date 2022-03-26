@@ -55,7 +55,6 @@ const objMensajesDao = new ContenedorMongoDB(
 // tuve que crearla así, para que no haya problemas con el async
 async function imprimir(){
     let mensajes = await objMensajesDao.listarTodo();
-    console.log(mensajes)
     return mensajes;
 }
 

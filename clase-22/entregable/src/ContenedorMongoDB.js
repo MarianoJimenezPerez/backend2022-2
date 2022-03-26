@@ -25,7 +25,7 @@ class ContenedorMongoDB {
     async listarTodo(){
         try {
             
-            const docs = await this.coleccion.find({});
+            const docs = await this.coleccion.find();
             return docs
 
 

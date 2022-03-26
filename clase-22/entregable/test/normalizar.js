@@ -24,30 +24,34 @@ async function print(obj){
 }
 
 let imprimir = (async function () {
-    let data = await objMensajesDao.listarTodo();
+    const data = await objMensajesDao.listarTodo();
     const dataMensajes = {
         id: '999',
         mensajes: data
     }
 
     //entidad más pequeña: autores
+    
+    const schemaAutor = new schema.Entity('author', {}, {idAttribute: 'email'});
 
-    const autores = new schema.Entity(
-        'autores',
-        {},
-        {idAttribute: 'email'}
-    );
+    //entidad que le sigue: mensaje
 
-    //entidad que le sigue: mensajes macro
-    const mensajesMacro = new schema.Entity('mensajes', {
-        mensajes: [autores]
-    });
+    const schemaMensaje= new schema.Entity('post', {author: schemaAutor});
 
-    //entidad que le sigue: mensajes macro
+    //entidad que le sigue: mensajes
 
+    const schemaMensajes = new schema.Entity("comentarios", {mensajes: [ schemaMensaje ]})
 
-    const dataNormalizada = normalize(dataMensajes, mensajesMacro);
+    const dataNormalizada = normalize(dataMensajes, schemaMensajes);
 
-    return print(dataNormalizada);
+    const dataDesnormalizada = denormalize(dataNormalizada.result, schemaMensajes, dataNormalizada.entities)
+
+    const longO = JSON.stringify(dataMensajes).length;
+    const longN = JSON.stringify(dataNormalizada).length;
+    const longD = JSON.stringify(dataDesnormalizada).length;
+
+    const porcentaje = (longN * 100) / longO
+    console.log(`Porcentaje de mejora: `, porcentaje.toFixed(2), `%`)
+    print(dataNormalizada);
 
 })();
