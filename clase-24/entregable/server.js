@@ -93,7 +93,7 @@ function generarProductos(cantidad){
 }
 
 function getNombreSession(req) {   //si no existe un nombre, crea uno vacío
-    const nombre = req.session.nombre;
+    const nombre = req.session.nombre ?? '';
     return nombre;
 }
 
@@ -102,9 +102,6 @@ function getNombreSession(req) {   //si no existe un nombre, crea uno vacío
 let productos = generarProductos(5);
 
 io.on('connection', async (socket) => { //defino la conexión y recibo con "on" al cliente.
-
-    //envio login
-    
 
     //envio los productos históricos
     socket.emit('productosHistoricos', productos)
@@ -139,8 +136,12 @@ app.get('/login', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-    req.session.nombre = req.query.nombre;
-    res.render('index', {nombre: getNombreSession(req)})
+    if(req.session.nombre){
+        res.render('index', {nombre: getNombreSession(req)})
+    } else {
+        req.session.nombre = req.query.nombre;
+        res.render('index', {nombre: getNombreSession(req)})
+    }
 });
 
 app.get('/api/productos-test', (req, res, next) => {
