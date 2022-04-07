@@ -35,4 +35,7 @@ Usando yargs
     .boolean('vivo')
     .argv
 
+    Para ver el resto de las (innumerables!) funcionalidades, se puede consultar la documentación oficial:
+        https://github.com/yargs/yargs/blob/HEAD/docs/api.md
+    
 */

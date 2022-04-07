@@ -13,6 +13,9 @@ VARIABLES DE ENTORNO
         -Ubicación de archivos y carpetas estáticos.
         -Credenciales de API's externas.
 
+Usando variables de entorno
+En primer lugar, en nuestro proyecto, creamos un archivo llamado config.js que centralizará nuestras variables de entorno.
+
 
 
 */
