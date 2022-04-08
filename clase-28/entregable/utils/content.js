@@ -1,4 +1,9 @@
 const minimist = require('minimist');
+const { fork } = require('child_process');
+const express = require('express');
+const {Server: HttpServer } = require('http');
+const app = express();
+const httpServer = new HttpServer(app);
 
 const argsObj = minimist(process.argv.slice(2));
 const args = Object.values(argsObj)[0];
@@ -42,4 +47,26 @@ function evaluar(params){
         }
     });
 }
+
+
+
 console.log(info)
+app.get('/randoms', (req, res, next) => {
+    let cant = Number(req.query.cant) || 100000000  // si el param no se ingresa, calculo cien millones de números
+
+    const child = fork('child.js');  //abro un hilo
+    child.send(cant); // envio a mi nuevo hilo la cantidad recibida por param para hacerlo no bloqueante
+    child.on('message', (message) => {
+        res.json(message)
+    })
+});
+
+const PORT = 8080
+const server = httpServer.listen(PORT, () => {  //escucho al httpserver, quien contiene el express
+    console.log(
+        `
+        Servidor Http escuchando en el puerto  ${PORT}
+        `
+    );
+})
+server.on("error", error => console.log(`Se detecto un error: ${error}`));
