@@ -1,0 +1,15 @@
+2022/04/13 22:17:30 [error] 5764#14812: *2 CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/html/favicon.ico" failed (2: El sistema no puede encontrar el archivo especificado), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2022/04/13 22:26:59 [notice] 7048#14476: signal process started
+2022/04/13 22:27:05 [notice] 15116#3828: signal process started
+2022/04/13 22:27:05 [error] 15116#3828: CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/04/13 22:27:25 [notice] 3508#5044: signal process started
+2022/04/13 22:27:25 [error] 3508#5044: CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/04/13 22:27:34 [notice] 1996#8004: signal process started
+2022/04/13 22:27:34 [error] 1996#8004: CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/04/13 22:27:52 [notice] 1500#9628: signal process started
+2022/04/13 22:27:52 [error] 1500#9628: CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/04/13 22:28:34 [notice] 1768#14352: signal process started
+2022/04/13 22:28:34 [error] 1768#14352: CreateFile() "C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-30\no-entregable\servernginx\nginx-1.20.2/logs/nginx.pid" failed (2: El sistema no puede encontrar el archivo especificado)
+2022/04/13 22:28:55 [notice] 11228#14828: signal process started
+2022/04/13 22:42:10 [notice] 10384#2136: signal process started
+2022/04/13 23:12:31 [notice] 15248#9588: signal process started
