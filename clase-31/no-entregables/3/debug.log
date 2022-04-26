@@ -1,0 +1,4 @@
+{"level":"info","message":"Servidor express escuchando en el puerto 8080"}
+{"level":"info","message":"Parámetros 1 y 1.5 correctos para la suma"}
+{"level":"warn","message":"Ruta GET /favicon.ico no implementada"}
+{"level":"error","message":"Error en servidor: Error: listen EADDRINUSE: address already in use :::8080"}

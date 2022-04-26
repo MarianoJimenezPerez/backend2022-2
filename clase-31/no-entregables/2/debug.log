@@ -1,0 +1,10 @@
+[2022-04-20T16:35:05.056] [INFO] prod - Servidor express escuchando en el puerto 8080
+[2022-04-20T16:35:16.857] [INFO] prod - Servidor express escuchando en el puerto 8080
+[2022-04-20T16:38:54.515] [INFO] prod - Conf logger modo: PROD
+[2022-04-20T16:38:54.520] [INFO] prod - Servidor express escuchando en el puerto 8080
+[2022-04-20T20:11:26.511] [INFO] prod - Conf logger modo: PROD
+[2022-04-20T20:11:26.519] [INFO] prod - Servidor express escuchando en el puerto 8080
+[2022-04-20T20:14:16.410] [INFO] prod - Conf logger modo: PROD
+[2022-04-20T20:14:16.416] [INFO] prod - Servidor express escuchando en el puerto 8080
+[2022-04-20T20:14:35.329] [INFO] prod - Conf logger modo: PROD
+[2022-04-20T20:14:35.334] [ERROR] prod - Error en servidor: Error: listen EADDRINUSE: address already in use :::8080
