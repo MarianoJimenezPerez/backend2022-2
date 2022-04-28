@@ -1,0 +1,273 @@
+Statistical profiling result from nobloq-v8.log, (35347 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+  33319   94.3%          C:\Windows\SYSTEM32\ntdll.dll
+   1970    5.6%          C:\Program Files\nodejs\node.exe
+      5    0.0%          C:\Windows\System32\KERNEL32.DLL
+      2    0.0%          C:\Windows\System32\KERNELBASE.dll
+      1    0.0%          C:\Windows\System32\WS2_32.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     27    0.1%   54.0%  LazyCompile: *resolve path.js:153:10
+      2    0.0%    4.0%  RegExp: ^[\^_`a-zA-Z\-0-9!#$%&'*+.|~]+$
+      2    0.0%    4.0%  RegExp: ^(?:[a-zA-Z]:|[\\/]{2}[^\\/]+[\\/][^\\/]+)?[\\/]*
+      2    0.0%    4.0%  LazyCompile: *next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:176:16
+      2    0.0%    4.0%  LazyCompile: *dirname path.js:644:10
+      2    0.0%    4.0%  LazyCompile: *Module._nodeModulePaths internal/modules/cjs/loader.js:550:37
+      1    0.0%    2.0%  RegExp: ^\/newUser\/?$
+      1    0.0%    2.0%  RegExp: (?:^|\/)\.?\.$
+      1    0.0%    2.0%  LazyCompile: *trim_prefix C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:288:23
+      1    0.0%    2.0%  LazyCompile: *toString buffer.js:775:46
+      1    0.0%    2.0%  LazyCompile: *toNamespacedPath path.js:609:19
+      1    0.0%    2.0%  LazyCompile: *readPackage internal/modules/cjs/loader.js:257:21
+      1    0.0%    2.0%  LazyCompile: *pushAsyncContext internal/async_hooks.js:506:26
+      1    0.0%    2.0%  LazyCompile: *normalize path.js:299:12
+      1    0.0%    2.0%  LazyCompile: *nextPart fs.js:1703:31
+      1    0.0%    2.0%  LazyCompile: *hidden internal/errors.js:306:25
+      1    0.0%    2.0%  LazyCompile: *fastparse C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\parseurl\index.js:95:20
+      1    0.0%    2.0%  LazyCompile: *extname path.js:827:10
+      1    0.0%    2.0%  LazyCompile: *_storeHeader _http_outgoing.js:362:22
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     50    0.1%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+     97    0.3%  194.0%  GC
+  35297   99.9%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+  33319   94.3%  C:\Windows\SYSTEM32\ntdll.dll
+
+   1970    5.6%  C:\Program Files\nodejs\node.exe
+   1313   66.6%    C:\Program Files\nodejs\node.exe
+    220   16.8%      LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:973:18
+    220  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1026:37
+    220  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+    220  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+    156   11.9%      LazyCompile: ~realpathSync fs.js:1718:22
+    156  100.0%        LazyCompile: ~toRealPath internal/modules/cjs/loader.js:360:20
+    154   98.7%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:351:17
+    121   78.6%            LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:367:23
+     28   18.2%            LazyCompile: *Module._findPath internal/modules/cjs/loader.js:461:28
+      4    2.6%            LazyCompile: ~tryPackage internal/modules/cjs/loader.js:305:20
+      2    1.3%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:461:28
+      2  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:804:35
+    111    8.5%      LazyCompile: ~stat internal/modules/cjs/loader.js:145:14
+     72   64.9%        LazyCompile: ~tryFile internal/modules/cjs/loader.js:351:17
+     70   97.2%          LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:367:23
+     60   85.7%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:461:28
+     10   14.3%            LazyCompile: ~tryPackage internal/modules/cjs/loader.js:305:20
+      2    2.8%          LazyCompile: *Module._findPath internal/modules/cjs/loader.js:461:28
+      2  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:804:35
+     39   35.1%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:461:28
+     39  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:804:35
+     39  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:724:24
+     40    3.0%      C:\Program Files\nodejs\node.exe
+      3    7.5%        LazyCompile: ~splitRoot fs.js:1677:33
+      3  100.0%          LazyCompile: ~realpathSync fs.js:1718:22
+      3  100.0%            LazyCompile: ~toRealPath internal/modules/cjs/loader.js:360:20
+      3    7.5%        LazyCompile: ~realpathSync fs.js:1718:22
+      3  100.0%          LazyCompile: ~toRealPath internal/modules/cjs/loader.js:360:20
+      3  100.0%            LazyCompile: ~tryFile internal/modules/cjs/loader.js:351:17
+      3    7.5%        LazyCompile: ~header C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:759:29
+      2   66.7%          LazyCompile: ~contentType C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:599:32
+      2  100.0%            LazyCompile: ~sendStatus C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:358:37
+      1   33.3%          LazyCompile: ~send C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:107:25
+      1  100.0%            LazyCompile: ~sendStatus C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:358:37
+      3    7.5%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:461:28
+      3  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:804:35
+      3  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:724:24
+      2    5.0%        LazyCompile: ~FastBuffer internal/buffer.js:955:14
+      2  100.0%          LazyCompile: ~createUnsafeBuffer buffer.js:149:28
+      1   50.0%            LazyCompile: ~createPool buffer.js:158:20
+      1   50.0%            LazyCompile: ~allocate buffer.js:407:18
+      2    5.0%        LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+      2  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1   50.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+      1   50.0%            LazyCompile: *Module.load internal/modules/cjs/loader.js:925:33
+      1    2.5%        LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:973:18
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        LazyCompile: ~translatePeerCertificate _tls_common.js:311:69
+      1  100.0%          LazyCompile: ~translatePeerCertificate _tls_common.js:311:69
+      1  100.0%            LazyCompile: ~TLSSocket.getPeerCertificate _tls_wrap.js:976:50
+      1    2.5%        LazyCompile: ~toString C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\uid-safe\index.js:102:19
+      1  100.0%          LazyCompile: ~uidSync C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\uid-safe\index.js:75:18
+      1  100.0%            LazyCompile: ~generateSessionId C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express-session\index.js:518:27
+      1    2.5%        LazyCompile: ~stat internal/modules/cjs/loader.js:145:14
+      1  100.0%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:351:17
+      1  100.0%            LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:367:23
+      1    2.5%        LazyCompile: ~setup C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\streamroller\node_modules\debug\src\common.js:7:15
+      1  100.0%          Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\streamroller\node_modules\debug\src\node.js:1:1
+      1  100.0%            LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+      1    2.5%        LazyCompile: ~readPackage internal/modules/cjs/loader.js:257:21
+      1  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:288:26
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        LazyCompile: ~read internal/modules/package_json_reader.js:16:14
+      1  100.0%          LazyCompile: *readPackage internal/modules/cjs/loader.js:257:21
+      1  100.0%            LazyCompile: ~tryPackage internal/modules/cjs/loader.js:305:20
+      1    2.5%        LazyCompile: ~pipe C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\send\index.js:510:43
+      1  100.0%          LazyCompile: ~serveStatic C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\serve-static\index.js:72:31
+      1  100.0%            LazyCompile: ~handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+      1    2.5%        LazyCompile: ~match C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:110:39
+      1  100.0%          LazyCompile: ~matchLayer C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:578:20
+      1  100.0%            LazyCompile: ~next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:176:16
+      1    2.5%        LazyCompile: ~format C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\content-type\index.js:65:17
+      1  100.0%          LazyCompile: ~setCharset C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\utils.js:246:41
+      1  100.0%            LazyCompile: ~send C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:107:25
+      1    2.5%        LazyCompile: ~expressInit C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\middleware\init.js:29:30
+      1  100.0%          LazyCompile: ~handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+      1  100.0%            LazyCompile: ~trim_prefix C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:288:23
+      1    2.5%        LazyCompile: ~decode C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\utils.js:111:23
+      1  100.0%          LazyCompile: ~parseQueryStringValues C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\parse.js:50:50
+      1  100.0%            LazyCompile: ~module.exports C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\parse.js:237:27
+      1    2.5%        LazyCompile: ~containsForbiddenHostCodePointExcludingPercent C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\whatwg-url\lib\url-state-machine.js:59:56
+      1  100.0%          LazyCompile: ~parseOpaqueHost C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\whatwg-url\lib\url-state-machine.js:379:25
+      1  100.0%            LazyCompile: ~parseHost C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\whatwg-url\lib\url-state-machine.js:328:19
+      1    2.5%        LazyCompile: ~checkInvalidHeaderChar _http_common.js:230:32
+      1  100.0%          LazyCompile: ~<anonymous> _http_outgoing.js:549:45
+      1  100.0%            LazyCompile: *hidden internal/errors.js:306:25
+      1    2.5%        LazyCompile: ~b C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\@faker-js\faker\dist\cjs\locales\en_IND\internet\domain_suffix.js:1:202
+      1  100.0%          LazyCompile: ~d C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\@faker-js\faker\dist\cjs\locales\en_IND\internet\domain_suffix.js:1:375
+      1  100.0%            Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\@faker-js\faker\dist\cjs\locales\en_IND\internet\domain_suffix.js:1:1
+      1    2.5%        LazyCompile: ~Schema.path C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongoose\lib\schema.js:659:33
+      1  100.0%          LazyCompile: ~add C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongoose\lib\schema.js:491:36
+      1  100.0%            LazyCompile: ~Schema C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongoose\lib\schema.js:94:16
+      1    2.5%        LazyCompile: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongoose\lib\helpers\pluralize.js:86:34
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~pluralize C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongoose\lib\helpers\pluralize.js:82:19
+      1    2.5%        LazyCompile: *stat internal/modules/cjs/loader.js:145:14
+      1  100.0%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:351:17
+      1  100.0%            LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:367:23
+      1    2.5%        LazyCompile: *parseQueryStringValues C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\parse.js:50:50
+      1  100.0%          LazyCompile: ~module.exports C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\parse.js:237:27
+      1  100.0%            LazyCompile: ~parseExtendedQueryString C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\utils.js:287:34
+      1    2.5%        Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\sift\index.js:1:1
+      1  100.0%          LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\graceful-fs\graceful-fs.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\fs-extra\lib\fs\index.js:1:1
+      1  100.0%          LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\connect-mongo\node_modules\debug\src\node.js:1:1
+      1  100.0%          LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    2.5%        Eval: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\@faker-js\faker\dist\cjs\locales\he\name\first_name.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1026:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+     37    2.8%      LazyCompile: ~openSync fs.js:489:18
+     37  100.0%        LazyCompile: ~readFileSync fs.js:391:22
+     37  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+     36   97.3%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+      1    2.7%            LazyCompile: *Module._load internal/modules/cjs/loader.js:724:24
+     32    2.4%      LazyCompile: ~pbkdf2Sync internal/crypto/pbkdf2.js:44:20
+     30   93.8%        LazyCompile: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\server.js:212:25
+     30  100.0%          LazyCompile: ~handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+     30  100.0%            LazyCompile: ~next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\route.js:114:16
+      2    6.3%        LazyCompile: ~HI C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongodb\lib\cmap\auth\scram.js:227:12
+      2  100.0%          LazyCompile: ~continueScramConversation C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongodb\lib\cmap\auth\scram.js:93:35
+      2  100.0%            LazyCompile: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\mongodb\lib\cmap\auth\scram.js:85:80
+     27    2.1%      LazyCompile: ~readSync fs.js:577:18
+     21   77.8%        LazyCompile: ~tryReadSync fs.js:379:21
+     21  100.0%          LazyCompile: ~readFileSync fs.js:391:22
+     21  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      6   22.2%        LazyCompile: *readFileSync fs.js:391:22
+      6  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      3   50.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+      3   50.0%            LazyCompile: *Module.load internal/modules/cjs/loader.js:925:33
+     27    2.1%      LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+     25   92.6%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:306:29
+      2    8.0%          Eval: ~<anonymous> crypto.js:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          LazyCompile: ~setupPrepareStackTrace internal/bootstrap/node.js:254:32
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    4.0%          LazyCompile: ~setupBuffer internal/bootstrap/node.js:302:21
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    4.0%          LazyCompile: ~lazyLoadStreams fs.js:2062:25
+      1  100.0%            LazyCompile: ~get ReadStream fs.js:2169:17
+      1    4.0%          LazyCompile: ~initializeCJSLoader internal/bootstrap/pre_execution.js:426:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution internal/bootstrap/pre_execution.js:21:36
+      1    4.0%          Eval: ~<anonymous> stream.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> net.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/url.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/timers.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/streams/pipeline.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/source_map/source_map_cache.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/modules/package_json_reader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/modules/esm/loader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/fs/promises.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/console/global.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/cluster/master.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/child_process.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> internal/bootstrap/switches/is_main_thread.js:1:1
+      1    4.0%          Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    4.0%          Eval: ~<anonymous> internal/abort_controller.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> https.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> http.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> events.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      1    4.0%          Eval: ~<anonymous> _tls_wrap.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:273:27
+      2    7.4%        LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:220:25
+      2  100.0%          LazyCompile: ~loadNativeModule internal/modules/cjs/helpers.js:35:26
+      2  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:724:24
+     23    1.8%      LazyCompile: ~closeSync fs.js:456:19
+     22   95.7%        LazyCompile: ~closeSync C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\graceful-fs\graceful-fs.js:72:24
+     13   59.1%          LazyCompile: ~readFileSync fs.js:391:22
+     13  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      9   40.9%          LazyCompile: *readFileSync fs.js:391:22
+      9  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1    4.3%        LazyCompile: ~readFileSync fs.js:391:22
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+     19    1.4%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:118:23
+     19  100.0%        LazyCompile: ~Socket._writeGeneric net.js:761:42
+     19  100.0%          LazyCompile: ~Socket._writev net.js:793:36
+     19  100.0%            LazyCompile: ~doWrite internal/streams/writable.js:367:17
+     14    1.1%      LazyCompile: ~authenticate C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\passport\lib\middleware\authenticate.js:94:31
+     10   71.4%        LazyCompile: ~handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+     10  100.0%          LazyCompile: ~trim_prefix C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:288:23
+      9   90.0%            LazyCompile: *next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:176:16
+      1   10.0%            LazyCompile: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:275:64
+      4   28.6%        LazyCompile: *trim_prefix C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:288:23
+      4  100.0%          LazyCompile: *next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:176:16
+      4  100.0%            LazyCompile: ~initialize C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\passport\lib\middleware\initialize.js:51:29
+     67    3.4%    LazyCompile: *Module._compile internal/modules/cjs/loader.js:1026:37
+     67  100.0%      LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1081:37
+     42   62.7%        LazyCompile: *Module.load internal/modules/cjs/loader.js:925:33
+     42  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:724:24
+     42  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:953:36
+     25   37.3%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:925:33
+     25  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:724:24
+     25  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:953:36
+

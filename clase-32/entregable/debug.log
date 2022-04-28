@@ -1,21 +1,4 @@
-
-[2022-04-26T00:06:50.119] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.123] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.136] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.150] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.186] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.196] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.199] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.242] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:06:50.836] [INFO] prod - Ruta GET / requerida
-[2022-04-26T00:07:00.698] [WARN] prod - Ruta GET /dasd no implementada
-[2022-04-26T00:07:12.941] [WARN] prod - Ruta GET /dasddsadsa no implementada
-[2022-04-26T00:07:16.908] [WARN] prod - Ruta GET /dasddsadsa no implementada
-[2022-04-26T00:07:30.334] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.373] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.386] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.437] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.497] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.518] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.542] [INFO] prod - Conf logger modo: PROD
-[2022-04-26T00:07:30.612] [INFO] prod - Conf logger modo: PROD
+[2022-04-27T21:17:19.551] [INFO] prod - Conf logger modo: PROD
+[2022-04-27T21:19:17.768] [INFO] prod - Conf logger modo: PROD
+[2022-04-27T22:07:00.191] [INFO] prod - Conf logger modo: PROD
+[2022-04-27T22:11:55.299] [INFO] prod - Conf logger modo: PROD

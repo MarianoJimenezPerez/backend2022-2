@@ -1,0 +1,60 @@
+Statistical profiling result from bloq-v8.log, (54099 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+  32924   60.9%          C:\Program Files\nodejs\node.exe
+  21108   39.0%          C:\Windows\SYSTEM32\ntdll.dll
+      5    0.0%          C:\Windows\System32\KERNELBASE.dll
+      3    0.0%          C:\Windows\System32\KERNEL32.DLL
+      1    0.0%          C:\Windows\System32\WS2_32.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     33    0.1%   56.9%  LazyCompile: *resolve path.js:153:10
+      6    0.0%   10.3%  LazyCompile: *next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\index.js:176:16
+      3    0.0%    5.2%  LazyCompile: *hidden internal/errors.js:306:25
+      2    0.0%    3.4%  LazyCompile: *dirname path.js:644:10
+      2    0.0%    3.4%  LazyCompile: *Module._nodeModulePaths internal/modules/cjs/loader.js:550:37
+      1    0.0%    1.7%  RegExp: ^\/socket\.io/socket\.io(\.msgpack|\.esm)?(\.min)?\.js(\.map)?(?:\?|$)
+      1    0.0%    1.7%  RegExp: ^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$
+      1    0.0%    1.7%  RegExp: ;\s*charset\s*=
+      1    0.0%    1.7%  RegExp: ; *([!#$%&'*+.^_`|~0-9A-Za-z-]+) *= *("(?:[\u000b\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\u000b\u0020-\u00ff])*"|[!#$%&'*+.^_`|~0-9A-Za-z-]+) *
+      1    0.0%    1.7%  LazyCompile: *toNamespacedPath path.js:609:19
+      1    0.0%    1.7%  LazyCompile: *parseQueryStringValues C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\qs\lib\parse.js:50:50
+      1    0.0%    1.7%  LazyCompile: *normalizeString path.js:59:25
+      1    0.0%    1.7%  LazyCompile: *nextTick internal/process/task_queues.js:103:18
+      1    0.0%    1.7%  LazyCompile: *nextPart fs.js:1703:31
+      1    0.0%    1.7%  LazyCompile: *header C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\response.js:759:29
+      1    0.0%    1.7%  LazyCompile: *fastparse C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\parseurl\index.js:95:20
+      1    0.0%    1.7%  LazyCompile: *_storeHeader _http_outgoing.js:362:22
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     58    0.1%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+     95    0.2%  163.8%  GC
+  54041   99.9%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+  32924   60.9%  C:\Program Files\nodejs\node.exe
+  32250   98.0%    C:\Program Files\nodejs\node.exe
+  30965   96.0%      LazyCompile: ~pbkdf2Sync internal/crypto/pbkdf2.js:44:20
+  30929   99.9%        LazyCompile: ~<anonymous> C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\server.js:228:27
+  21454   69.4%          LazyCompile: *handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+  21454  100.0%            LazyCompile: ~next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\route.js:114:16
+   9475   30.6%          LazyCompile: ~handle C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\layer.js:86:49
+   9475  100.0%            LazyCompile: ~next C:\Users\Main\Desktop\backend 2022-2\backend2022-2\clase-32\entregable\node_modules\express\lib\router\route.js:114:16
+
+  21108   39.0%  C:\Windows\SYSTEM32\ntdll.dll
+
