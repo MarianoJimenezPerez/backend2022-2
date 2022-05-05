@@ -177,190 +177,175 @@ io.on('connection', async (socket) => { //defino la conexión y recibo con "on" 
 })
 
 /* --------------------------------INICIO SV-------------------------------- */
-const PORT = parseInt(process.argv[2]) || 8080;
+const PORT = parseInt(process.env.PORT) || 8080;
 const modoCluster = process.argv[3] == 'CLUSTER';
+const users = {}
+/* --------------------------------Rutas-------------------------------- */
+/***GETS***/
+/* LOGIN */
+app.get('/login', (req, res, next) => {
+    const { url, method } = req
+    logger.info(`Ruta ${method} ${url} requerida`)
+    res.render('login', {})
+});
+app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/', authType: 'reauthenticate' }));
+app.get("/getUsers", (req, res) => {
+    res.json({ users })
+})
+app.get("/newUser", (req, res) => {
+    let username = req.query.username || "";
+    const password = req.query.password || "";
 
-if (modoCluster && cluster.isPrimary) {
+    username = username.replace(/[!@#$%^&*]/g, "");
 
-    console.log(`Número de procesadores: ${numCPUs}`);
-    console.log(`PID MASTER ${process.pid}`);
-
-    for (let i = 0; i < numCPUs; i++) {
-        cluster.fork();
+    if (!username || !password || users[ username ]) {
+        return res.sendStatus(400);
     }
 
-    cluster.on('exit', worker => {
-        console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString());
-        cluster.fork();
-    })
-} else {
-    const users = {}
-    logger.info(`Conf logger modo: ${process.env.NODE_ENV}`);
-    /* --------------------------------Rutas-------------------------------- */
-    /***GETS***/
-    /* LOGIN */
-    app.get('/login', (req, res, next) => {
-        const { url, method } = req
-        logger.info(`Ruta ${method} ${url} requerida`)
-        res.render('login', {})
-    });
-    app.get('/auth/facebook', passport.authenticate('facebook'));
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/', authType: 'reauthenticate' }));
-    app.get("/getUsers", (req, res) => {
-        res.json({ users })
-    })
-    app.get("/newUser", (req, res) => {
-        let username = req.query.username || "";
-        const password = req.query.password || "";
+    const salt = crypto.randomBytes(128).toString("base64");
+    const hash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
+    users[ username ] = { salt, hash };
 
-        username = username.replace(/[!@#$%^&*]/g, "");
+    res.sendStatus(200);
+});
+app.get("/auth-bloq", (req, res) => {
+    let username = req.query.username || "";
+    const password = req.query.password || "";
+    
+    username = username.replace(/[!@#$%^&*]/g, "");
 
-        if (!username || !password || users[ username ]) {
-            return res.sendStatus(400);
-        }
+    if (!username || !password || !users[ username ]) {
+        // process.exit(1)
+        return res.sendStatus(400);
+    }
 
-        const salt = crypto.randomBytes(128).toString("base64");
-        const hash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
-        users[ username ] = { salt, hash };
+    const { salt, hash } = users[ username ];
+    const encryptHash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
 
+    if (crypto.timingSafeEqual(hash, encryptHash)) {
         res.sendStatus(200);
-    });
-    app.get("/auth-bloq", (req, res) => {
-        let username = req.query.username || "";
-        const password = req.query.password || "";
-    
-        username = username.replace(/[!@#$%^&*]/g, "");
-    
-        if (!username || !password || !users[ username ]) {
+    } else {
             // process.exit(1)
-            return res.sendStatus(400);
-        }
+        res.sendStatus(401);
+    }
+});
 
-        const { salt, hash } = users[ username ];
-        const encryptHash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
 
-        if (crypto.timingSafeEqual(hash, encryptHash)) {
-            res.sendStatus(200);
+app.get("/auth-nobloq", (req, res) => {
+    let username = req.query.username || "";
+    const password = req.query.password || "";
+    
+    username = username.replace(/[!@#$%^&*]/g, "");
+    
+    if (!username || !password || !users[ username ]) {
+        // process.exit(1)
+        return res.sendStatus(400);
+    }
+
+    crypto.pbkdf2(password, users[ username ].salt, 10000, 512, 'sha512', (err, hash) => {
+        if (users[ username ].hash.toString() === hash.toString()) {
+        res.sendStatus(200);
         } else {
-            // process.exit(1)
-            res.sendStatus(401);
+        // process.exit(1)
+        res.sendStatus(401);
         }
-        });
-
-
-    app.get("/auth-nobloq", (req, res) => {
-        let username = req.query.username || "";
-        const password = req.query.password || "";
-    
-        username = username.replace(/[!@#$%^&*]/g, "");
-    
-        if (!username || !password || !users[ username ]) {
-          // process.exit(1)
-            return res.sendStatus(400);
-        }
-
-        crypto.pbkdf2(password, users[ username ].salt, 10000, 512, 'sha512', (err, hash) => {
-            if (users[ username ].hash.toString() === hash.toString()) {
-            res.sendStatus(200);
-            } else {
-            // process.exit(1)
-            res.sendStatus(401);
-            }
-        });
     });
+});
 
     /* LOGOUT */
-    app.get('/logout', (req, res) => {
-        const { url, method } = req
-        logger.info(`Ruta ${method} ${url} requerida`)
-        const nombre = getNombreSession(req)
+app.get('/logout', (req, res) => {
+    const { url, method } = req
+    logger.info(`Ruta ${method} ${url} requerida`)
+    const nombre = getNombreSession(req)
+    const datosUsuario = {
+        nombre: req.user.displayName,
+        foto: req.user.photos[0].value,
+    }
+    req.session.destroy(err => {
+        if (err) {
+            res.json({ error: 'olvidar', body: err })
+        } else {
+            res.render('logout', {nombre: nombre, datos: datosUsuario})
+        }
+    })
+    req.logout();
+})
+
+    /* HOME */
+app.get('/', (req, res, next) => {
+    const { url, method } = req
+    logger.info(`Ruta ${method} ${url} requerida`)
+    /*facebook*/
+    if(req.isAuthenticated()){
+        if (!req.user.contador) {
+            req.user.contador = 0
+        }
+        req.user.contador++
         const datosUsuario = {
             nombre: req.user.displayName,
             foto: req.user.photos[0].value,
         }
-        req.session.destroy(err => {
-            if (err) {
-                res.json({ error: 'olvidar', body: err })
-            } else {
-                res.render('logout', {nombre: nombre, datos: datosUsuario})
-            }
-        })
-        req.logout();
-    })
-
-    /* HOME */
-    app.get('/', (req, res, next) => {
-        const { url, method } = req
-        logger.info(`Ruta ${method} ${url} requerida`)
-        /*facebook*/
-        if(req.isAuthenticated()){
-            if (!req.user.contador) {
-                req.user.contador = 0
-            }
-            req.user.contador++
-            const datosUsuario = {
-                nombre: req.user.displayName,
-                foto: req.user.photos[0].value,
-            }
-            res.render('indexFacebook', {contador: req.user.contador, datos: datosUsuario});
+        res.render('indexFacebook', {contador: req.user.contador, datos: datosUsuario});
+    } else {
+        if(req.session.nombre){
+            res.render('index', {nombre: getNombreSession(req)})
         } else {
-            if(req.session.nombre){
-                res.render('index', {nombre: getNombreSession(req)})
-            } else {
-                req.session.nombre = req.query.nombre;
-                res.render('index', {nombre: getNombreSession(req)})
-            }
+            req.session.nombre = req.query.nombre;
+            res.render('index', {nombre: getNombreSession(req)})
         }
-    });
+    }
+});
 
     /* SESSION COUNTER */
-    app.get('/con-session', (req,res) => {
-        const { url, method } = req
-        logger.info(`Ruta ${method} ${url} requerida`)
-        if (req.session.contador) {
-            req.session.contador++
-            res.send(`${getNombreSession(req)} visitaste la página ${req.session.contador} veces.`)
-        } else {
-            req.session.nombre = req.query.nombre; //por query pasamos nuestro nombre
-            req.session.contador = 1
-            res.send(`Te damos la Bienvenida ${getNombreSession(req)}`);
-        }
-    })
+app.get('/con-session', (req,res) => {
+    const { url, method } = req
+    logger.info(`Ruta ${method} ${url} requerida`)
+    if (req.session.contador) {
+        req.session.contador++
+        res.send(`${getNombreSession(req)} visitaste la página ${req.session.contador} veces.`)
+    } else {
+        req.session.nombre = req.query.nombre; //por query pasamos nuestro nombre
+        req.session.contador = 1
+        res.send(`Te damos la Bienvenida ${getNombreSession(req)}`);
+    }
+})
 
     /* INFO */
 
-    app.get('/info', (req, res, next) => {
-        const { url, method } = req
-        logger.info(`Ruta ${method} ${url} requerida`)
-        const datosProcess = {
-            directorio: process.cwd(),
-            id: process.pid,
-            version: process.version,
-            titulo: process.title,
-            so: process.platform,
-            argv: process.argv.slice(1),
-            rss: process.memoryUsage().rss
-        }
-        console.log(process.argv)
-        res.render('infoTable', {datosProcess: datosProcess})
-    });
+app.get('/info', (req, res, next) => {
+    const { url, method } = req
+    logger.info(`Ruta ${method} ${url} requerida`)
+    const datosProcess = {
+        directorio: process.cwd(),
+        id: process.pid,
+        version: process.version,
+        titulo: process.title,
+        so: process.platform,
+        argv: process.argv.slice(1),
+        rss: process.memoryUsage().rss
+    }
+    console.log(process.argv)
+    res.render('infoTable', {datosProcess: datosProcess})
+});
 
-    /* RUTA INEXISTENTE */
+/* RUTA INEXISTENTE */
     
-    app.get('*', (req, res) => {
-        const { url, method } = req
-        logger.warn(`Ruta ${method} ${url} no implementada`)
-        res.send(`Ruta ${method} ${url} no está implementada`)
-    })
-    /* --------------------------------Servidor-------------------------------- */
-    const server = httpServer.listen(PORT, () => {  //escucho al httpserver, quien contiene el express
-        console.log(
-            `
-            Servidor Http escuchando en el puerto  ${PORT}
-        =====================================================
-            PID WORKER ${process.pid}
-            `
-        );
-    })
-    server.on("error", error => console.log(`Se detecto un error: ${error}`));
-}
+app.get('*', (req, res) => {
+    const { url, method } = req
+    logger.warn(`Ruta ${method} ${url} no implementada`)
+    res.send(`Ruta ${method} ${url} no está implementada`)
+})
+
+
+/* --------------------------------Servidor-------------------------------- */
+const server = httpServer.listen(PORT, () => {  //escucho al httpserver, quien contiene el express
+    console.log(
+        `
+        Servidor Http escuchando en el puerto  ${PORT}
+    =====================================================
+        PID WORKER ${process.pid}
+        `
+    );
+})
+server.on("error", error => console.log(`Se detecto un error: ${error}`));
