@@ -25,7 +25,7 @@ class ContenedorMongoDB {
     async listarTodo(){
         try {
             
-            const docs = await this.coleccion.find();
+            const docs = await this.coleccion.find().lean();
             return docs
 
 
@@ -38,7 +38,7 @@ class ContenedorMongoDB {
     async listarId(id){
         try {
 
-            const doc = await this.coleccion.find({_id: id});
+            const doc = await this.coleccion.find({_id: id}).lean();
             return doc
 
         } catch (err) {

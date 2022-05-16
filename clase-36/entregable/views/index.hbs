@@ -11,9 +11,27 @@
                 <th>Título</th>
                 <th>Precio</th>
                 <th>Miniatura</th>
+                <th>Agregar</th>
             </tr>
         </thead>
-        <tbody id="t-body-productos" class="text-center"></tbody>
+        <tbody id="t-body-productos" class="text-center">
+            {{#each productos}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{title}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <img class="img-thumbnail"src="{{thumbnail}}"></img>
+                </td>
+                <td>
+                    <form action="/agregarProducto" method="POST">
+                        <input class="d-none" type="text" name="id" value="{{_id}}">
+                        <input type="submit" value="Agregar">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
     </table>
 </div>
 

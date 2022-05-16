@@ -13,7 +13,8 @@ const connectMongo = require('connect-mongo');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
-const enviarMailRegistro = require('./src/nodemailer/nodemailer.js')
+const enviarMailRegistro = require('./src/nodemailer/nodemailer.js');
+const {encriptar, desencriptar} = require('./src/bcrypt/encriptador.js');
 /* --------------------------------Instancia de express-------------------------------- */
 
 const app = express();
@@ -83,16 +84,11 @@ passport.use('local-signup', new LocalStrategy ({
             usuario: {
                 nombre: req.body.name,
                 email: email,
-                password: password,
+                password: await encriptar(password),
                 edad: req.body.edad,
                 direccion: req.body.direccion,
                 telefono: req.body.telefono,
-                carrito: [
-                    {
-                        title: "ejemplo",
-                        price: 200
-                    }
-                ]
+                carrito: []
             }
         }
         await objUsuariosDao.insertar(user);
@@ -121,7 +117,7 @@ passport.use('local-signin', new LocalStrategy ({
         let encontrado = false;
         for(usuario of dbUsuarios){
             if( usuario.usuario.email == req.body.email &&
-                usuario.usuario.password == req.body.password  ){
+                desencriptar(req.body.password, usuario.usuario.password)){
                 encontrado = usuario;
             }
         }
@@ -132,6 +128,16 @@ passport.use('local-signin', new LocalStrategy ({
 /* --------------------------------Globales-------------------------------- */
 /* BASE DE DATOS */
 let date = new Date;
+
+
+const objProductosDao = new ContenedorMongoDB(
+    'productos',
+    {     
+        title: {type: String, require: true},
+        price: {type: Number, require: true},
+        thumbnail: {type: String, require: true}
+    }  
+)
 
 const objMensajesDao = new ContenedorMongoDB(
     'mensajes',
@@ -173,7 +179,7 @@ async function imprimir(){
 
 /* --------------------------------Funciones-------------------------------- */
 
-function generarProductos(cantidad){
+/*function generarProductos(cantidad){
     let productos = [];
     for (let i = 0; i < cantidad; i++){
         let product = {
@@ -187,7 +193,7 @@ function generarProductos(cantidad){
 
     return productos;
 }
-
+*/
 function getNombreSession(req) {   //si no existe un nombre, crea uno vacío
     const nombre = req.session.nombre ?? '';
     return nombre;
@@ -195,7 +201,7 @@ function getNombreSession(req) {   //si no existe un nombre, crea uno vacío
 
 /* --------------------------------Websocket-------------------------------- */
 
-let productos = generarProductos(5);
+/*let productos = generarProductos(5);*/
 
 io.on('connection', async (socket) => { //defino la conexión y recibo con "on" al cliente.
 
@@ -204,11 +210,6 @@ io.on('connection', async (socket) => { //defino la conexión y recibo con "on" 
 
     //envio los mensajes históricos
     socket.emit('mensajesHistoricos', await imprimir())
-
-    //escucho logins
-    socket.on('nuevoLogin', data => {
-        console.log(data)
-    })
 
     //escucho nuevos productos
     socket.on('nuevoProducto', data => {
@@ -239,7 +240,6 @@ app.get('/register', (req, res, next) => {
 /* LOGOUT */
 app.get('/logout', (req, res) => {
     const nombre = getNombreSession(req);
-    console.log(req.user)
     const datosUsuario = {
         nombre: req.user.nombre
     }
@@ -253,7 +253,8 @@ app.get('/logout', (req, res) => {
     req.logout();
 })
 /* HOME */
-app.get('/', (req, res, next) => {
+app.get('/', async (req, res, next) => {
+    let productos = await objProductosDao.listarTodo();
     /*Local*/
     if(req.isAuthenticated()){
         if (!req.user.contador) {
@@ -263,13 +264,13 @@ app.get('/', (req, res, next) => {
         const datosUsuario = {
             nombre: req.user.usuario.nombre
         }
-        res.render('index', {contador: req.user.contador, datos: datosUsuario});
+        res.render('index', {contador: req.user.contador, datos: datosUsuario, productos: productos});
     } else {
         if(req.session.nombre){
-            res.render('index', {nombre: getNombreSession(req)})
+            res.render('index', {nombre: getNombreSession(req), productos: productos})
         } else {
             req.session.nombre = req.query.nombre;
-            res.render('index', {nombre: getNombreSession(req)})
+            res.render('index', {nombre: getNombreSession(req), productos: productos})
         }
     }
 });
@@ -279,8 +280,6 @@ app.get('/carrito', async (req, res, next) => {
     if(req.isAuthenticated()){
         let usuario = req.user.usuario;
         let productosAgregados = usuario.carrito;
-        console.log(usuario);
-        console.log(productosAgregados);
         res.render('carrito', {datos: usuario, productosAdd: productosAgregados})
     } else {
         res.redirect('/login')
@@ -289,6 +288,33 @@ app.get('/carrito', async (req, res, next) => {
 
 /*******POSTS*******/
 
+/* PRODUCTO NUEVO */
+app.post('/productoN', async (req, res, next) => {
+    let productoNuevo = {
+        title: req.body.title,
+        price: req.body.price,
+        thumbnail: req.body.thumbnail
+    };
+    console.log(productoNuevo);
+    await objProductosDao.insertar(productoNuevo);
+    res.redirect("/")
+});
+
+/* AGREGAR PRODUCTO AL CARRITO */
+app.post('/agregarProducto', async (req, res, next) => {
+    if(req.isAuthenticated()){
+        const pId = req.body.id;
+
+        let usuario = req.user.usuario;
+        let productoDeseado = await objProductosDao.listarId(pId);
+        usuario.carrito.push(productoDeseado[0])
+        res.redirect('/carrito')
+    } else {
+        res.redirect('/login')
+    }
+});
+
+/* LOGIN */
 app.post('/login', passport.authenticate('local-signin', {
     successRedirect: '/',
     failureRedirect: '/login',
