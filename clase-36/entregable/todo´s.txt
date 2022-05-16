@@ -1,0 +1,2 @@
+Pasar mongo password a un archivo por variable de entorno
+Exportar todo passport a archivo independiente
