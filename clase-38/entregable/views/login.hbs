@@ -1,0 +1,15 @@
+<div class="container mt-3 justify-content-center">
+    <h3 class="text-center">Login de usuario</h3>
+    <form id="login-form" class="row d-flex justify-content-center" action="/login" method="POST">
+        <div class="mb-3 col-6 ">
+            <input id="input-login-email" type="email" placeholder="Email..." class="form-control mt-2" name="email">
+            <p id="alert-email"></p>
+            <input id="input-login-password" type="password" placeholder="Password..." class="form-control mt-2" name="password">
+            <p id="alert-password"></p>
+            <div class="d-flex justify-content-around mt-3">
+                <button id="btn-login-submit" type="submit" class="btn btn-primary">Iniciar sesión</button>
+                <a href="/register" class="btn btn-primary">Registrarse</a>
+            </div>
+        </div>
+    </form>
+</div>
