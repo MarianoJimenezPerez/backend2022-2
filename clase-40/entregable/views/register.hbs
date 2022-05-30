@@ -1,0 +1,25 @@
+<div class="container mt-3 justify-content-center">
+    <h3 class="text-center">Registro de usuarios</h3>
+    <form id="register-form" class="row d-flex justify-content-center" action="/register" method="POST">
+        <div class="mb-3 col-6 ">
+            <input id="input-register-nombre" type="text" placeholder="Ingrese su nombre..." class="form-control mt-2" name="name">
+            <p id="alert-nombre"></p>
+            <input id="input-register-email" type="email" placeholder="Ingrese su email..." class="form-control mt-2" name="email">
+            <p id="alert-email"></p>
+            <input id="input-register-password" type="password" placeholder="Ingrese su password..." class="form-control mt-2" name="password">
+            <p id="alert-password"></p>
+            <input id="input-register-edad" type="number" placeholder="Ingrese su edad..." class="form-control mt-2" name="edad">
+            <p id="alert-edad"></p>
+            <input id="input-register-direccion" type="text" placeholder="Ingrese su dirección..." class="form-control mt-2" name="direccion">
+            <p id="alert-direccion"></p>
+            <input id="input-register-telefono" type="telephone" placeholder="Ingrese su teléfono..." class="form-control mt-2" name="telefono">
+            <p id="alert-telefono"></p>
+            <div class="d-flex justify-content-around mt-3">
+                <button id="btn-register-submit" type="submit" class="btn btn-primary">Registrarme</button>
+            </div>
+            <div class="text-center mt-3">
+                <a class="btn btn-danger" href="/login">Volver</a>
+            </div>
+        </div>
+    </form>
+</div>
