@@ -1,0 +1,6 @@
+[2022-05-26T19:11:49.228] [INFO] prod - Elementos listados 0
+[2022-05-26T19:11:49.233] [INFO] prod - Elemento guardado {"dni":"1234","nombre":"Mario","apellido":"Bros"}
+[2022-05-26T19:11:49.233] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Luigi","apellido":"Bros"}
+[2022-05-26T19:11:49.233] [INFO] prod - Elemento guardado {"code":401,"msg":"DNI repetido"}
+[2022-05-26T19:11:49.233] [INFO] prod - Elementos listados 2
+[2022-05-26T19:11:49.236] [INFO] prod - Elementos listados 2

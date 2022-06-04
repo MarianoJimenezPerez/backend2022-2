@@ -1,0 +1,78 @@
+[2022-05-26T18:33:21.880] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al conectarse a mongodb',
+  detalle: MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+      at NativeConnection.Connection.openUri (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\connection.js:807:32)
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:342:10
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+      at new Promise (<anonymous>)
+      at promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+      at Mongoose._promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:1181:10)
+      at Mongoose.connect (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:341:20)
+      at MongoDBClient.connect (file:///C:/temp/Clase-40/ejemplos/DAO/src/Classes/MongoDBClient.class.js:18:31)
+      at ProductosDAO.guardar (file:///C:/temp/Clase-40/ejemplos/DAO/src/services/ProductosDAO.js:32:29)
+      at file:///C:/temp/Clase-40/ejemplos/DAO/main.js:5:23 {
+    reason: TopologyDescription {
+      type: 'Unknown',
+      servers: [Map],
+      stale: false,
+      compatible: true,
+      heartbeatFrequencyMS: 10000,
+      localThresholdMS: 15,
+      logicalSessionTimeoutMinutes: undefined
+    },
+    code: undefined
+  }
+}
+[2022-05-26T18:34:14.830] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al conectarse a mongodb',
+  detalle: MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+      at NativeConnection.Connection.openUri (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\connection.js:807:32)
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:342:10
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+      at new Promise (<anonymous>)
+      at promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+      at Mongoose._promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:1181:10)
+      at Mongoose.connect (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:341:20)
+      at MongoDBClient.connect (file:///C:/temp/Clase-40/ejemplos/DAO/src/Classes/MongoDBClient.class.js:18:31)
+      at ProductosDAO.guardar (file:///C:/temp/Clase-40/ejemplos/DAO/src/services/ProductosDAO.js:32:29)
+      at file:///C:/temp/Clase-40/ejemplos/DAO/main.js:5:23 {
+    reason: TopologyDescription {
+      type: 'Unknown',
+      servers: [Map],
+      stale: false,
+      compatible: true,
+      heartbeatFrequencyMS: 10000,
+      localThresholdMS: 15,
+      logicalSessionTimeoutMinutes: undefined
+    },
+    code: undefined
+  }
+}
+[2022-05-26T18:34:29.046] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al conectarse a mongodb',
+  detalle: MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+      at NativeConnection.Connection.openUri (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\connection.js:807:32)
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:342:10
+      at C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+      at new Promise (<anonymous>)
+      at promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+      at Mongoose._promiseOrCallback (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:1181:10)
+      at Mongoose.connect (C:\temp\Clase-40\ejemplos\DAO\node_modules\mongoose\lib\index.js:341:20)
+      at MongoDBClient.connect (file:///C:/temp/Clase-40/ejemplos/DAO/src/Classes/MongoDBClient.class.js:18:31)
+      at ProductosDAO.guardar (file:///C:/temp/Clase-40/ejemplos/DAO/src/services/ProductosDAO.js:32:29)
+      at file:///C:/temp/Clase-40/ejemplos/DAO/main.js:5:23 {
+    reason: TopologyDescription {
+      type: 'Unknown',
+      servers: [Map],
+      stale: false,
+      compatible: true,
+      heartbeatFrequencyMS: 10000,
+      localThresholdMS: 15,
+      logicalSessionTimeoutMinutes: undefined
+    },
+    code: undefined
+  }
+}

@@ -1,0 +1,7 @@
+[2022-05-26T19:05:34.838] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al listarAll()',
+  detalle: TypeError: Assignment to constant variable.
+      at PersonasDAOFile.listarAll (file:///C:/temp/Clase-40/desafiosClase/desafioDTO/src/services/PersonasDAO.file.js:29:18)
+      at async file:///C:/temp/Clase-40/desafiosClase/desafioDTO/main.js:6:13
+}

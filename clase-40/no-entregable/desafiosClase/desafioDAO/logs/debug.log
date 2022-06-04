@@ -1,0 +1,18 @@
+[2022-05-26T18:41:06.104] [INFO] prod - Elementos listados 0
+[2022-05-26T18:41:06.105] [INFO] prod - Elemento guardado {"dni":"1234","nombre":"Kevin Joel","apellido":"Oliva Elvir"}
+[2022-05-26T18:41:06.106] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Alejandra Michelle","apellido":"Padilla Avila"}
+[2022-05-26T18:41:06.106] [INFO] prod - Elemento guardado {"code":401,"msg":"DNI repetido"}
+[2022-05-26T18:41:06.106] [INFO] prod - Elementos listados 2
+[2022-05-26T18:41:06.107] [INFO] prod - Elemento modificado {"dni":"1234","nombre":"Kevin","apellido":"McCallister"}
+[2022-05-26T18:41:06.107] [INFO] prod - Elementos listados 2
+[2022-05-26T18:41:06.109] [INFO] prod - Elemento eliminado [{"dni":"1234","nombre":"Kevin","apellido":"McCallister"}]
+[2022-05-26T18:41:06.110] [INFO] prod - Elementos listados 1
+[2022-05-26T19:09:51.416] [INFO] prod - Elementos listados 0
+[2022-05-26T19:09:51.418] [INFO] prod - Elemento guardado {"dni":"1234","nombre":"Luigi","apellido":"Bros"}
+[2022-05-26T19:09:51.418] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Mario","apellido":"Bros"}
+[2022-05-26T19:09:51.418] [INFO] prod - Elemento guardado {"code":401,"msg":"DNI repetido"}
+[2022-05-26T19:09:51.418] [INFO] prod - Elementos listados 2
+[2022-05-26T19:09:51.419] [INFO] prod - Elemento modificado {"dni":"1234","nombre":"Luigi","apellido":"Bowser"}
+[2022-05-26T19:09:51.420] [INFO] prod - Elementos listados 2
+[2022-05-26T19:09:51.421] [INFO] prod - Elemento eliminado [{"dni":"1234","nombre":"Luigi","apellido":"Bowser"}]
+[2022-05-26T19:09:51.422] [INFO] prod - Elementos listados 1

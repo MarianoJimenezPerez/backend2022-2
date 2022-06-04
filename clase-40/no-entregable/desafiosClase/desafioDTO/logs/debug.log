@@ -1,0 +1,29 @@
+[2022-05-26T19:05:34.838] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al listarAll()',
+  detalle: TypeError: Assignment to constant variable.
+      at PersonasDAOFile.listarAll (file:///C:/temp/Clase-40/desafiosClase/desafioDTO/src/services/PersonasDAO.file.js:29:18)
+      at async file:///C:/temp/Clase-40/desafiosClase/desafioDTO/main.js:6:13
+}
+[2022-05-26T19:07:05.794] [INFO] prod - Elementos listados 0
+[2022-05-26T19:07:05.796] [INFO] prod - Elementos listados 0
+[2022-05-26T19:07:05.797] [INFO] prod - Elemento guardado {"dni":"1234","nombre":"Kevin Joel","apellido":"Oliva Elvir"}
+[2022-05-26T19:07:05.798] [INFO] prod - Elementos listados 1
+[2022-05-26T19:07:05.799] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Alejandra Michelle","apellido":"Padilla Avila"}
+[2022-05-26T19:07:05.799] [INFO] prod - Elementos listados 2
+[2022-05-26T19:07:05.800] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Alejandra Michelle","apellido":"Padilla Avila"}
+[2022-05-26T19:07:05.801] [INFO] prod - Elementos listados 3
+[2022-05-26T19:07:05.802] [INFO] prod - Elementos listados 3
+[2022-05-26T19:07:05.803] [INFO] prod - Elementos listados 3
+[2022-05-26T19:07:05.806] [INFO] prod - Elementos listados 3
+[2022-05-26T19:09:33.695] [INFO] prod - Elementos listados 0
+[2022-05-26T19:09:33.698] [INFO] prod - Elementos listados 0
+[2022-05-26T19:09:33.699] [INFO] prod - Elemento guardado {"dni":"1234","nombre":"Mario","apellido":"Bros"}
+[2022-05-26T19:09:33.700] [INFO] prod - Elementos listados 1
+[2022-05-26T19:09:33.700] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Luigi","apellido":"Bros"}
+[2022-05-26T19:09:33.701] [INFO] prod - Elementos listados 2
+[2022-05-26T19:09:33.702] [INFO] prod - Elemento guardado {"dni":"5678","nombre":"Luigi","apellido":"Bros"}
+[2022-05-26T19:09:33.702] [INFO] prod - Elementos listados 3
+[2022-05-26T19:09:33.704] [INFO] prod - Elementos listados 3
+[2022-05-26T19:09:33.704] [INFO] prod - Elementos listados 3
+[2022-05-26T19:09:33.706] [INFO] prod - Elementos listados 3

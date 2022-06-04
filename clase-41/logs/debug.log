@@ -1,0 +1,37 @@
+[2022-05-30T20:03:39.474] [INFO] prod - Elementos listados 0
+[2022-05-30T20:04:17.481] [INFO] prod - Elemento guardado {"titulo":"Harry Potter","cuerpo":"lorem ipsum","autor":"J K R","imagen":"img://a","email":"hp@email.com","vista":"vista1"}
+[2022-05-30T20:05:01.007] [INFO] prod - Elemento guardado {"code":401,"msg":"id repetido"}
+[2022-05-30T20:08:49.181] [INFO] prod - Elemento guardado {"titulo":"Lord of the Rings","cuerpo":"lorem ipsum lorem ipsum lorem ipsum lorem ipsum","autor":"Tolkien","imagen":"img://b","email":"T@email.com","vista":"vista2"}
+[2022-05-30T20:09:10.413] [INFO] prod - Elemento guardado {"titulo":"Lord of the Rings","cuerpo":"lorem ipsum lorem ipsum lorem ipsum lorem ipsum","autor":"Tolkien","imagen":"img://b","email":"T@email.com","vista":"vista2","id":1}
+[2022-05-30T20:09:14.027] [INFO] prod - Elemento guardado {"titulo":"Lord of the Rings","cuerpo":"lorem ipsum lorem ipsum lorem ipsum lorem ipsum","autor":"Tolkien","imagen":"img://b","email":"T@email.com","vista":"vista2","id":2}
+[2022-05-30T20:09:16.847] [INFO] prod - Elemento guardado {"titulo":"Lord of the Rings","cuerpo":"lorem ipsum lorem ipsum lorem ipsum lorem ipsum","autor":"Tolkien","imagen":"img://b","email":"T@email.com","vista":"vista2","id":3}
+[2022-05-30T20:09:25.025] [INFO] prod - Elementos listados 3
+[2022-05-30T20:26:54.075] [INFO] prod - Elementos listados 0
+[2022-05-30T20:27:01.810] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:28:12.464] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:28:47.495] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:30:29.456] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:30:30.140] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:30:57.247] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:32:12.019] [INFO] prod - Elementos listados 6
+[2022-05-30T20:33:28.270] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar()',
+  detalle: ReferenceError: docs is not defined
+      at NoticiasDAOMongoDB.guardar (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/services/NoticiasDAO.mongodb.js:39:25)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async guardarNoticia (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/controllers/noticias.controller.js:29:23)
+}
+[2022-05-30T20:33:46.460] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar()',
+  detalle: ReferenceError: docs is not defined
+      at NoticiasDAOMongoDB.guardar (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/services/NoticiasDAO.mongodb.js:39:25)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async guardarNoticia (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/controllers/noticias.controller.js:29:23)
+}
+[2022-05-30T20:34:01.005] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:35:34.142] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:35:53.555] [INFO] prod - Elemento guardado [object Object]
+[2022-05-30T20:35:56.234] [INFO] prod - Elementos listados 11
+[2022-05-30T20:36:06.597] [INFO] prod - Elementos listados 11

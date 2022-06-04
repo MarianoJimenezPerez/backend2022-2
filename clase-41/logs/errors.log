@@ -1,0 +1,16 @@
+[2022-05-30T20:33:28.270] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar()',
+  detalle: ReferenceError: docs is not defined
+      at NoticiasDAOMongoDB.guardar (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/services/NoticiasDAO.mongodb.js:39:25)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async guardarNoticia (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/controllers/noticias.controller.js:29:23)
+}
+[2022-05-30T20:33:46.460] [ERROR] prod - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar()',
+  detalle: ReferenceError: docs is not defined
+      at NoticiasDAOMongoDB.guardar (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/services/NoticiasDAO.mongodb.js:39:25)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async guardarNoticia (file:///C:/programacion_backend28220/Clases/Clase-41/proyectoMERN/src/controllers/noticias.controller.js:29:23)
+}
