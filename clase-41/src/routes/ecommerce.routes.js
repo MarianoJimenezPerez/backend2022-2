@@ -9,11 +9,18 @@ class RouterEcommerce {
     }
 
     start(){
-        router.get('/', this.controlador.getProducts);
+
+        router.get('/', this.controlador.isAuthenticated, this.controlador.getHome);
+
+        router.get('/signin', this.controlador.getSignin);
+
+        router.get('/signup', this.controlador.getSignup);
+
+        router.post('/signup', this.controlador.insertAccount);
+
+        router.post('/signin', this.controlador.findAccount);
 
         router.get('/:id?', this.controlador.obtenerNoticia);
-        
-        router.post('/', this.controlador.guardarNoticia);
 
         router.put('/:id', this.controlador.actualizarNoticia);
 
