@@ -21,6 +21,28 @@ const GraphqlController = {
             console.log(error)
             // throw new CustomError(500, 'Error en Metodo getProducts', error);
         }
+    },
+    async createProducto ( datos ){
+        try {
+            const productoS = JSON.stringify(datos.datos);
+            const productoJ = JSON.parse(productoS);
+            await DAO.guardar(productoJ);
+            return productoJ;
+        } catch (error) {
+            console.log(error)
+            // throw new CustomError(500, 'Error en Metodo getProducts', error);
+        }
+    },
+    async agregarStock ( title, producto ){
+        console.log(title)
+        try {
+            console.log(producto)
+            await DAO.actualizar(title, producto)
+            return producto;
+        } catch (error) {
+            console.log(error)
+            // throw new CustomError(500, 'Error en Metodo getProducts', error);
+        }
     }
 }
 

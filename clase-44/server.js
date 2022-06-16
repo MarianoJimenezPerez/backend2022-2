@@ -69,6 +69,8 @@ app.use('/graphql', graphqlHTTP({
     rootValue: {
         getProductos: GraphqlController.getProductos,
         getProducto: GraphqlController.getProducto,
+        createProducto: GraphqlController.createProducto,
+        agregarStock: GraphqlController.agregarStock,
     },
     graphiql: true,
 }));

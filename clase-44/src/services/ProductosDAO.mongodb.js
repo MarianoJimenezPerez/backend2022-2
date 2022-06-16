@@ -51,7 +51,6 @@ class ProductosDAOMongoDB extends DAO{
         try {
             await this.conn.connect();
             await this.colecction.create(elemento);
-            
             return elemento;
         } catch (error) {
             const cuserr = new CustomError(500, 'Error al guardar()', error);
@@ -60,6 +59,21 @@ class ProductosDAOMongoDB extends DAO{
         } finally {
             this.conn.disconnect();
             logger.info(`Elemento guardado ${elemento}`);
+        }
+    }
+    async actualizar(title) {
+        let doc = {}
+        try {
+            await this.colecction.updateOne({title: title}, {$set: {stock: 100}});
+            doc = await listarTitle(title)
+            return doc
+        } catch (error) {
+            const cuserr = new CustomError(500, 'Error al actualizar()', error);
+            logger.error(cuserr);
+            throw cuserr;
+        } finally {
+            this.conn.disconnect();
+            logger.info(`Elemento actualizado ${doc}`);
         }
     }
 }
