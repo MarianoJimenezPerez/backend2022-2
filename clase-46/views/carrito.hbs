@@ -1,0 +1,41 @@
+{{>userBox}}
+{{#if productosAdd}}
+<div class="container">
+    <h3 class="color-brown mt-3 text-center">Tu carrito</h3>
+    <table class="table tabla-productos mt-3">
+        <thead class="text-center">
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Precio</th>
+                <th>Miniatura</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="t-body-productos-carrito" class="text-center">
+            {{#each productosAdd}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <img class="img-thumbnail"src="{{thumbnail}}"></img>
+                </td>
+                <td>
+                    <span class="text-center"> X </span>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{else}}
+<div class="container">
+    <h3 class="color-brown mt-3 text-center">Tu carrito</h3>
+    <div class="container mt-3">
+    <div class="alert alert-danger d-flex justify-content-between" role="alert">
+        <h4 id="user-box-title" class="alert-heading">Todavía no has agregado productos a tu carrito</h4>
+    </div>
+</div>
+</div>
+{{/if}}
