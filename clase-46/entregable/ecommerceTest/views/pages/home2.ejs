@@ -1,0 +1,27 @@
+<h1>Recibido</h1>
+
+<table>
+    <table class="table tabla-productos mt-3">
+        <thead class="text-center">
+            <tr>
+                <th>Título</th>
+                <th>Precio</th>
+                <th>Miniatura</th>
+            </tr>
+        </thead>
+        <tbody id="t-body-productos" class="text-center">
+            <% products.forEach((product) => { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.price %></td>
+                <td>
+                    <img class="img-thumbnail"src="<%= product.thumbnail %>"></img>
+                </td>
+                <td>
+                    <a href="products/<%= product.id %>">Ver producto</a>
+                </td>
+            </tr>
+            <% }) %> 
+        </tbody>
+    </table>
+</table>
