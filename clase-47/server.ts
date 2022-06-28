@@ -18,8 +18,10 @@ const colores = [];
 router.get("/", async (ctx: Context) => {
     const output = await dejs.renderFile('./index.ejs', {colores: colores});
     const template = await copy(output, stdout);
-    /*ctx.response.body = template;*/  // si descomentas solo esta linea, envía al front el número 22 (sin modificar el ejs). Si el ejs se modifica, cambia este número
+     /*ctx.response.body = template;*/  // si descomentas solo esta linea, envía al front el número 22 (sin modificar el ejs). Si el ejs se modifica, cambia este número
 
+
+    //si descomentas esta parte podrás ver todo el front "normal", el cuál funciona, en comunicación con el back, sin renderizado dinamico
     /*ctx.response.body = `
     <!DOCTYPE html>
     <html>
